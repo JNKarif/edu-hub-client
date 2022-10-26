@@ -15,7 +15,7 @@ const AsideNav = () => {
             <div>
 {
     category.map(course=><p key={course.id}>
-        <Link to={`/category/${course.id}`}>{course.name}</Link> 
+        <Link to={`/courses/${course.id}`}>{course.name}</Link> 
     </p>)
 }
             </div>
