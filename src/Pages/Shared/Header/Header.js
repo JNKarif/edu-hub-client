@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { FaUser } from 'react-icons/fa';
 import { RiAwardLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthPorvider/AuthProvider';
@@ -17,7 +19,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><Link to='/'>Courses</Link> </Nav.Link>
+            <Nav.Link><Link className='text-decoration-none' to='/'>Courses</Link> </Nav.Link>
             <Nav.Link href="#pricing">FAQ</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -32,9 +34,16 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Blog</Nav.Link>
-            <Nav.Link > <Link to='/login'> Login</Link>
-              {user?.displayName}
+            <Nav.Link><Link className='text-decoration-none' to='/blog'>Blog</Link> </Nav.Link>
+            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+            <Nav.Link href="#deets">
+              {user?.photoURL ?
+              <Image style={{height:'40px'}} roundedCircle src={user?.photoURL}></Image>
+              :<FaUser></FaUser>              
+              }
+              </Nav.Link>
+            <Nav.Link > <Link className='text-decoration-none' to='/login'> Login</Link>
+              
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

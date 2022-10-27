@@ -10,15 +10,14 @@ const AsideNav = () => {
             .then(data => setCategory(data))
     }, [])
     return (
-        <div>
-            <h2>Course List{category.length}</h2>
-            <div>
+        <div className='mt-4'>
+            
 {
     category.map(course=><p key={course.id}>
-        <Link to={`/courses/${course.id}`}>{course.name}</Link> 
+        <Link className='text-decoration-none' to={`/courses/${course.id}`}>{course.name}</Link> 
     </p>)
 }
-            </div>
+           
         </div>
     );
 };
