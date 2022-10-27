@@ -28,26 +28,17 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link><Link className='text-decoration-none' to='/'>Courses</Link> </Nav.Link>
               <Nav.Link href="#pricing">FAQ</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link><Link className='text-decoration-none' to='/blog'>Blog</Link> </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link><Link className='text-decoration-none' to='/blog'>Blog</Link> </Nav.Link>
+              
               <Nav.Link href="#deets">
                 {
                   user?.uid ?
                     <>
                       <span> {user?.displayName}</span>
-                      <Nav.Link onClick={handleLogOut}>Log Out </Nav.Link>
+                      <Button variant="outline-light" onClick={handleLogOut} >Log Out</Button>
+                      {/* <Nav.Link onClick={handleLogOut}> </Nav.Link> */}
                     </>
 
                     :
