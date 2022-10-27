@@ -1,13 +1,15 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthPorvider/AuthProvider';
 
 const Login = () => {
 
-    const {signIn}= useContext(AuthContext)
-
+    const {signIn, providerLogin}= useContext(AuthContext)
+const navigate= useNavigate()
 const handleLogin= event=>{
     event.preventDefault();
     const form= event.target;
@@ -18,9 +20,20 @@ const handleLogin= event=>{
     .then(result=>{
         const user= result.user;
         console.log(user)
-        form.reset()
+        form.reset();
+        navigate('/')
     })
     .catch(error=> console.error(error))
+}
+
+const googleProvider= new GoogleAuthProvider()
+const handleGoogleSignIn=()=>{
+    providerLogin(googleProvider)
+    .then(result=>{
+        const user =result.user;
+        console.log(user)
+    })
+    .catch(error=>console.error(error))
 }
 
     return (
@@ -42,7 +55,12 @@ const handleLogin= event=>{
       <Button variant="primary" type="submit">
        Login
       </Button>
-      <Form.Text className="text-muted">
+
+      <Button onClick={handleGoogleSignIn} className='m-2' variant="primary" type="submit">
+      <FaGoogle></FaGoogle> Login with Google
+      </Button>
+
+      <Form.Text className="text-danger">
           We'll never share your email with anyone else.
         </Form.Text>
       <p>Not registered yet ? Please <Link to='/register'>Register</Link></p>
