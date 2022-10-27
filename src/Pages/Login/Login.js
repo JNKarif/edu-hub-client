@@ -1,30 +1,32 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthPorvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('')
     const { signIn, providerLogin } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation();
 
-
+    const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value
         console.log(email, password)
+
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
                 form.reset();
                 setError('');
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.error(error)
@@ -33,6 +35,9 @@ const Login = () => {
     }
 
     const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
+
+
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
@@ -42,7 +47,14 @@ const Login = () => {
             .catch(error => console.error(error))
     }
 
-
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error(error))
+    }
 
     return (
         <div>
@@ -63,13 +75,17 @@ const Login = () => {
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                <>
 
-                <Button onClick={handleGoogleSignIn} className='m-2' variant="primary" type="submit">
-                    <FaGoogle></FaGoogle> Login with Google
-                </Button>
+                    <Button onClick={handleGoogleSignIn} className='m-2' variant="primary" type="submit">
+                        <FaGoogle></FaGoogle> Login with Google
+                    </Button>
+
+                    <Button onClick={handleGithubSignIn} className='m-2' variant="primary" type="submit" ><FaGithub></FaGithub> Login with Github</Button>
+                </>
 
                 <Form.Text className="text-danger">
-                   {error}
+                    {error}
                 </Form.Text>
                 <p>Not registered yet ? Please <Link to='/register'>Register</Link></p>
             </Form>

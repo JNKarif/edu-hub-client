@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
             {
                 path:'/',
         element:<Home></Home>,
-       loader:()=>fetch('http://localhost:5000/courses')
+       loader:()=>fetch('https://edu-hub-server.vercel.app/courses')
             },
             {
                 path:'/allcourses',
@@ -33,7 +33,7 @@ export const routes = createBrowserRouter([
             {
                 path:'/courses/:id',
         element:<CourseDetails></CourseDetails>,
-        loader:({params})=>fetch(`http://localhost:5000/courses/${params.id}`)
+        loader:({params})=>fetch(`https://edu-hub-server.vercel.app/courses/${params.id}`)
             },
             {
                 path:'/login',
@@ -50,7 +50,7 @@ export const routes = createBrowserRouter([
             {
                 path:'/premium/:id',
                 element: <PrivateRoute><Premium></Premium></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/premium/${params.id}`)
+                loader:({params})=>fetch(`https://edu-hub-server.vercel.app/premium/${params.id}`)
             },
             {
                 path:'*',

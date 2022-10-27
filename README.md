@@ -1,3 +1,17 @@
+Website Name: EduHub
+
+Live website link:
+
+Features of EduHub: 
+1. Language: JavaScript
+2. Framework: Bootstrap , React-bootstrap
+3. Authentication system: Firebase
+4. Context API
+5. React icon
+6. React router dom
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
