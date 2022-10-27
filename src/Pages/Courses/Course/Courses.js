@@ -1,47 +1,29 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 
 const Courses = ({ course }) => {
 
-    return (
-        <div>
-           
-                {/* <Row>
-                    
-                    <Col lg="6">
-                    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={course.img} />
-      <Card.Body>
-        <Card.Title>{course.name}</Card.Title>
-       
-        <Button variant="primary">Details</Button>
-      </Card.Body>
-    </Card>
-                    </Col>
-                   
-                    <Col lg="6">
-                  
-                    </Col>
+  return (
+    <div>
 
-                </Row> */}
+      <Card className="bg-dark text-danger fw-bold  mb-3">
+        <Card.Img style={{ height: 420 }} src={course?.img} alt="Card image" />
+        <Card.ImgOverlay>
+          <Card.Title className='fs-1 text-white fw-bold'>{course?.name}</Card.Title>
+          <Card.Text className='fs-5'>
+            {course?.header}
+          </Card.Text>
+          <Link to={`/courses/${course._id}`}>         
+           <Button variant="outline-light" >Details</Button></Link>
 
-<Card className="bg-dark text-white  mb-3">
-      <Card.Img style={{height:400}} src={course.img} alt="Card image" />
-      <Card.ImgOverlay>
-        <Card.Title className='fs-2'>{course.name}</Card.Title>
-        <Card.Text className='fs-5'>
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </Card.Text>
-        <Button variant="outline-light" className='w-40'>Details</Button>
-      </Card.ImgOverlay>
-    </Card>
-          
-        </div>
-    );
+        </Card.ImgOverlay>
+      </Card>
+
+    </div>
+  );
 };
 
 export default Courses;
