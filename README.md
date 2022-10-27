@@ -1,14 +1,14 @@
 Website Name: EduHub
 
-Live website link:
+Live website link: https://eduhub-6899a.web.app/
 
 Features of EduHub: 
 1. Language: JavaScript
 2. Framework: Bootstrap , React-bootstrap
 3. Authentication system: Firebase
-4. Context API
-5. React icon
-6. React router dom
+4. Server deploy: Vercel  
+5. Misc: React icon, Context API,  React router dom
+ 
 
 
 

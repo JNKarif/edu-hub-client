@@ -29,9 +29,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><Link className='text-decoration-none' to='/'>Courses</Link> </Nav.Link>
-              <Nav.Link href="#pricing">FAQ</Nav.Link>
-              <Nav.Link><Link className='text-decoration-none' to='/blog'>Blog</Link> </Nav.Link>
+              <Nav.Link><Link className='text-decoration-none fs-4 text-light' to='/'>Courses</Link> </Nav.Link>
+              <Nav.Link className='fs-4 text-light' href="#pricing">FAQ</Nav.Link>
+              <Nav.Link><Link className='text-decoration-none fs-4 text-light' to='/blog'>Blog</Link> </Nav.Link>
             </Nav>
             <Nav className='fs-6'>
 
@@ -55,25 +55,25 @@ const Header = () => {
             </Nav>
             <Nav>
 
-              <Nav.Link href="#deets">
+              <Nav.Link className='fs-4' href="#deets">
                 {
                   user?.uid ?
                     <>
-                      <span> {user?.displayName}</span>
+                      {/* <span> {user?.displayName}</span> */}
                       <Button variant="outline-light" onClick={handleLogOut} >Log Out</Button>
                       {/* <Nav.Link onClick={handleLogOut}> </Nav.Link> */}
                     </>
 
                     :
-                    <Link className='text-decoration-none'
+                    <Link className='text-decoration-none text-light'
                       to='/login'> Login</Link>
                 }
 
               </Nav.Link>
 
-              <Nav.Link href="#deets">
+              <Nav.Link className='fs-4' href="#deets">
                 {user?.photoURL ?
-                  <Image style={{ height: '30px' }}
+                  <Image title={user.displayName} style={{ height: '30px' }}
                     roundedCircle
                     src={user?.photoURL}></Image>
                   : <FaUser></FaUser>

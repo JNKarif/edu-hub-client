@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import AsideNav from '../Pages/Shared/AsideNav/AsideNav';
-import Footer from '../Pages/Shared/Footer/Footer';
 import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
@@ -11,18 +10,18 @@ const Main = () => {
             <Header></Header>
             <Container>
                 <Row>
-                    
+
                     <Col lg="3">
-                    <AsideNav></AsideNav>
+                        <AsideNav></AsideNav>
                     </Col>
-                   
+
                     <Col lg="9">
-                    <Outlet> </Outlet>
+                        <Outlet> </Outlet>
                     </Col>
 
                 </Row>
             </Container>
-            <Footer></Footer>
+
         </div>
     );
 };

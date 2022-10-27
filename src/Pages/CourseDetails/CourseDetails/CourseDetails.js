@@ -1,34 +1,40 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import CourseDetailsCard from '../../CourseDetailsCard/CourseDetailsCard';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { FaFileDownload } from "react-icons/fa"
 
 const CourseDetails = () => {
-    const courses =useLoaderData()
+    const courses = useLoaderData()
     console.log(courses)
     return (
         <div>
-           
 
-            <Card  className='mt-3' >
-      <Card.Img variant="top" style={{ width: '18rem' }} src={courses?.img} />
-      <Card.Body>
-        <div className='d-flex justify-content-between '>
-        <Card.Title>{courses?.name}</Card.Title>
-        <FaFileDownload className='fs-4'></FaFileDownload>
-        </div>
-       
-        <Card.Text>
-         {courses?.body}
-        </Card.Text>
+            {/* here we showed the details description of the courses */}
+
+            <div class="card mb-3 mt-4" >
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src={courses?.img} class="img-fluid rounded-start" alt="..." />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+
+                            <div className='d-flex justify-content-between'>
+                                <h5 class="card-title">{courses?.name}</h5>
+                                <FaFileDownload className='fs-4'></FaFileDownload>
+                            </div>
 
 
-        <Link to={`/premium/${courses._id}`}><Button variant="primary">Get Premium Access</Button></Link>
-        
-      </Card.Body>
-    </Card>
+                            <p class="card-text"> {courses?.body}</p>
+                            <p class="card-text"> <Link to={`/premium/${courses._id}`}>
+                                <Button variant="primary">Get Premium Access</Button></Link></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     );
 };

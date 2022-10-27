@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -14,6 +14,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
+        // preventDefault for not reload the page
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -28,6 +29,7 @@ const Login = () => {
                 setError('');
                 navigate(from, { replace: true })
             })
+            // for errors we can see in the console
             .catch(error => {
                 console.error(error)
                 setError(error.message)
@@ -37,7 +39,7 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
 
-
+    // login by google account starts here
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
@@ -46,7 +48,7 @@ const Login = () => {
             })
             .catch(error => console.error(error))
     }
-
+    // login by github account from here
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
             .then(result => {

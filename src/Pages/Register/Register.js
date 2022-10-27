@@ -9,6 +9,7 @@ const Register = () => {
     const { createUser } = useContext(AuthContext)
 
     const handleRegister = (event) => {
+        // preventDefault for not reload the page
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -24,6 +25,8 @@ const Register = () => {
                 setError('')
                 form.reset()
             })
+
+            // for errors we can see in the console
             .catch(error => {
                 console.error(error);
                 setError(error.message)
@@ -60,7 +63,7 @@ const Register = () => {
                     Register
                 </Button>
                 <Form.Text className="text-danger">
-                  {error}
+                    {error}
                 </Form.Text>
                 <p>Already have an account? Please <Link to='/login'>Login</Link></p>
             </Form>

@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signOut(auth)
     }
-
+    // useEffect for side effect outside our tasks
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('user inside state change');
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
-
+    // we kept all these in authInfo to receive globally
     const authInfo = {
         user,
         providerLogin,
