@@ -10,6 +10,7 @@ import Login from "../../Pages/Login/Login";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import Premium from "../../Pages/Premium/Premium";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -47,9 +48,9 @@ export const routes = createBrowserRouter([
                 element:<Blog></Blog>
             },
             {
-                path:'/courses/:id',
-                element:<Premium></Premium>,
-                loader:({params})=>fetch(`http://localhost:5000/courses/${params.id}`)
+                path:'/premium/:id',
+                element: <PrivateRoute><Premium></Premium></PrivateRoute>,
+                loader:({params})=>fetch(`http://localhost:5000/premium/${params.id}`)
             },
             {
                 path:'*',
