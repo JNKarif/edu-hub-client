@@ -10,6 +10,8 @@ const Login = () => {
 
     const {signIn, providerLogin}= useContext(AuthContext)
 const navigate= useNavigate()
+
+
 const handleLogin= event=>{
     event.preventDefault();
     const form= event.target;
@@ -35,6 +37,8 @@ const handleGoogleSignIn=()=>{
     })
     .catch(error=>console.error(error))
 }
+
+
 
     return (
         <div>

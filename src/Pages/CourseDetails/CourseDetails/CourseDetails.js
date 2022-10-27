@@ -13,17 +13,19 @@ const CourseDetails = () => {
            
 
             <Card  className='mt-3' >
-      <Card.Img variant="top" style={{ width: '18rem' }} src={courses.img} />
+      <Card.Img variant="top" style={{ width: '18rem' }} src={courses?.img} />
       <Card.Body>
         <div className='d-flex justify-content-between '>
-        <Card.Title>{courses.name}</Card.Title>
+        <Card.Title>{courses?.name}</Card.Title>
         <FaFileDownload className='fs-4'></FaFileDownload>
         </div>
        
         <Card.Text>
-         {courses.body}
+         {courses?.body}
         </Card.Text>
-        <Link to='/premium'><Button variant="primary">Get Premium Access</Button></Link>
+
+
+        <Link to={`/courses/${courses._id}`}><Button variant="primary">Get Premium Access</Button></Link>
         
       </Card.Body>
     </Card>
