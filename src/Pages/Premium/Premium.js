@@ -2,9 +2,11 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Premium = () => {
     const premium = useLoaderData()
+    useTitle('Premium')
     return (
         <div>
             <Card className='bg-dark text-light mt-4' >

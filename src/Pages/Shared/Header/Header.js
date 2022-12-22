@@ -25,15 +25,15 @@ const Header = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home" className='fs-1'><RiAwardLine></RiAwardLine> EduHub</Navbar.Brand>
+          <Navbar.Brand href="/" className='fs-3'><RiAwardLine></RiAwardLine> EduHub</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link><Link className='text-decoration-none fs-4 text-light' to='/'>Courses</Link> </Nav.Link>
-              <Nav.Link className='fs-4 text-light' href="#pricing">FAQ</Nav.Link>
+              
               <Nav.Link><Link className='text-decoration-none fs-4 text-light' to='/blog'>Blog</Link> </Nav.Link>
             </Nav>
-            <Nav className='fs-6'>
+            {/* <Nav className='fs-6'>
 
               <DarkModeToggle
                 mode={mode}
@@ -52,7 +52,7 @@ const Header = () => {
                   setMode(mode);
                 }}
               />
-            </Nav>
+            </Nav> */}
             <Nav>
 
               <Nav.Link className='fs-4' href="#deets">

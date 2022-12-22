@@ -3,11 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthPorvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const [error, setError] = useState('')
     const { createUser } = useContext(AuthContext)
-
+useTitle('Register')
     const handleRegister = (event) => {
         // preventDefault for not reload the page
         event.preventDefault();
